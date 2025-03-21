@@ -1,8 +1,8 @@
 import  { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Updated import for v6
-import CharacterList from './charcterList';
-import CharacterDetails from './CharacterDetails';
-import { Character } from './models/charachterTypes';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; 
+import CharacterList from './components/characterList/characterList'; 
+import CharacterDetails from './components/characterDetails/characterDetails'; 
+import { Character } from './models/charachterTypes'; 
 
 const App = () => {
   const [characters, setCharacters] = useState<Character[] | null>(null);
@@ -18,9 +18,22 @@ const App = () => {
       if (!response.ok) throw new Error('Failed to fetch data');
 
       const data = await response.json();
-      setCharacters(data.results); // Store character results in state
+
+      // Fetch species names separately
+      const charactersWithSpecies = await Promise.all(
+        data.results.map(async (character: any) => {
+          if (character.species.length > 0) {
+            const speciesResponse = await fetch(character.species[0]);
+            const speciesData = await speciesResponse.json();
+            return { ...character, species_names: [speciesData.name] };
+          }
+          return { ...character, species_names: ['N/A'] };
+        })
+      );
+
+      setCharacters(charactersWithSpecies);
     } catch (err: any) {
-      setError(err.message); // Handle errors gracefully
+      setError(err.message);
     } finally {
       setLoading(false);
     }
@@ -33,9 +46,7 @@ const App = () => {
   return (
     <Router>
       <div className="container">
-        <h1>Star Wars Characters</h1>
         <Routes>
-          {/* Define routes here */}
           <Route
             path="/"
             element={
@@ -49,7 +60,14 @@ const App = () => {
           />
           <Route
             path="/character/:id"
-            element={<CharacterDetails characters={characters} />}
+            element={
+              <CharacterDetails
+                characters={characters}
+                loading={loading}
+                error={error}
+                onRefresh={fetchCharacters}
+              />
+            }
           />
         </Routes>
       </div>

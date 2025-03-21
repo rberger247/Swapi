@@ -1,0 +1,107 @@
+.character-list-container {
+    margin-top: 20px;
+    max-width: 1200px;
+    padding: 0 24px;
+  }
+  
+  .title {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .loading-box {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+  
+  .error-text {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .character-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+  }
+  
+  .clickable-card {
+    text-decoration: none;
+    padding: 16px;
+    width: 250px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+  
+  .clickable-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+  }
+  
+  .card-content {
+    padding: 0 !important;
+  }
+  
+  .avatar-box {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+  
+  .character-avatar {
+    width: 60px !important; /* Reduced from 80px */
+    height: 60px !important; /* Reduced from 80px */
+  }
+  
+  .character-name {
+    text-align: center;
+    margin-bottom: 8px;
+  }
+  
+  .character-info {
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  
+  .click-hint {
+    text-align: center;
+    margin-top: 8px;
+    font-style: italic;
+  }
+  
+  .pagination-refresh-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 32px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .pagination-box {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+  }
+  
+  .refresh-box {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .refresh-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: none;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .refresh-button:hover {
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+  }
