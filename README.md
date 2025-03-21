@@ -2,6 +2,12 @@
 
 A React-based web application to view Star Wars characters, featuring a paginated list with clickable cards for detailed views, Built with Material-UI supporting a mobile responsive design.
 
+## Project Setup
+
+This project was generated using [Vite](https://vitejs.dev/), a modern build tool that provides to provide a faster and leaner development experience. It consists of two major parts
+- **A dev server that provides rich feature enhancements over native ES modules, for example extremely fast Hot Module Replacement (HMR).**
+- **A build command that bundles your code with Rollup, pre-configured to output highly optimized static assets for production.**
+
 ## Features
 
 - **Character List**: Displays a paginated grid of Star Wars characters with basic details (name, birth year, species).
