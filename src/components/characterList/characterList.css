@@ -52,8 +52,8 @@
   }
   
   .character-avatar {
-    width: 60px !important; /* Reduced from 80px */
-    height: 60px !important; /* Reduced from 80px */
+    width: 60px !important; 
+    height: 60px !important;
   }
   
   .character-name {

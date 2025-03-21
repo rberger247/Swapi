@@ -1,52 +1,50 @@
-/* Reset and base styles */
+
 .character-details-container {
     margin-top: 40px;
-    max-width: 1200px; /* Matches MUI Container default */
-    padding: 0 24px; /* Matches MUI Container default padding */
+    max-width: 1200px; 
+    padding: 0 24px; 
   }
   
-  /* Loading spinner */
+
   .loading-box {
     display: flex;
     justify-content: center;
     margin-bottom: 32px;
   }
-  
-  /* Error message */
+
   .error-text {
     text-align: center;
     margin-bottom: 20px;
   }
   
-  /* Paper container */
+ 
   .character-paper {
     padding: 40px;
     border-radius: 8px;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1); /* Approximates elevation={3} */
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1); 
   }
   
-  /* Main content layout */
+
   .character-content {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  
-  /* Avatar styling */
+
   .character-avatar {
-    width: 150px !important; /* Override MUI default */
-    height: 150px !important; /* Override MUI default */
+    width: 150px !important; 
+    height: 150px !important; 
     margin-bottom: 20px;
   }
   
-  /* Character name */
+
   .character-name {
     font-weight: bold;
     text-align: center;
     margin-bottom: 20px;
   }
   
-  /* Info grid */
+ 
   .character-info {
     display: flex;
     flex-wrap: wrap;
@@ -55,23 +53,23 @@
     width: 100%;
   }
   
-  /* Individual info items */
+
   .info-item {
     width: 100%;
     text-align: center;
   }
   
-  /* Info titles */
+ 
   .info-title {
     margin-bottom: 8px;
   }
   
-  /* Back button container */
+
   .back-button-box {
     margin-top: 32px;
   }
   
-  /* Back button */
+
   .back-button {
     padding: 10px 20px;
     font-size: 16px;
@@ -80,14 +78,14 @@
     text-transform: none;
   }
   
-  /* Responsive design */
-  @media (min-width: 600px) { /* MUI 'sm' breakpoint */
+
+  @media (min-width: 600px) { 
     .info-item {
       width: 45%;
     }
   }
   
-  @media (min-width: 900px) { /* MUI 'md' breakpoint */
+  @media (min-width: 900px) { 
     .info-item {
       width: 30%;
     }
