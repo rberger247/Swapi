@@ -1,38 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Character } from '../../models/charachterTypes';
-import { CircularProgress, Container, Typography, Box, Paper, Button, Avatar } from '@mui/material';
+import { CircularProgress, Container, Typography, Box, Card, CardContent, Button, Avatar } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import './CharacterDetails.css'; 
+import './CharacterDetails.css';
 
 interface CharacterDetailsProps {
-  characters: Character[] | null;
+  fetchCharacterById: (id: number) => Promise<Character | null>;
   loading: boolean;
   error: string | null;
-  onRefresh: () => void;
 }
 
-const CharacterDetails: React.FC<CharacterDetailsProps> = ({ characters, loading, error }) => {
+const CharacterDetails: React.FC<CharacterDetailsProps> = ({ fetchCharacterById, loading, error }) => {
   const { id } = useParams();
-  const character = characters ? characters[parseInt(id || '0')] : null;
-  const theme = useTheme();
-  const [speciesNames, setSpeciesNames] = useState<string[]>([]);
-
-  const fetchSpeciesNames = async (speciesUrls: string[]) => {
-    const speciesPromises = speciesUrls.map(async (url) => {
-      const response = await fetch(url);
-      const data = await response.json();
-      return data.name;
-    });
-    const names = await Promise.all(speciesPromises);
-    setSpeciesNames(names);
-  };
+  const [character, setCharacter] = useState<Character | null>(null);
 
   useEffect(() => {
-    if (character && character.species && character.species.length) {
-      fetchSpeciesNames(character.species);
-    }
-  }, [character]);
+    const fetchDetails = async () => {
+      if (id) {
+        const characterData = await fetchCharacterById(parseInt(id)); // Fetch character by ID
+        setCharacter(characterData);
+      }
+    };
+    fetchDetails();
+  }, [id, fetchCharacterById]);
 
   const getAvatarUrl = (name: string) => {
     return `https://robohash.org/${encodeURIComponent(name)}?set=set3`;
@@ -53,8 +44,8 @@ const CharacterDetails: React.FC<CharacterDetailsProps> = ({ characters, loading
       )}
 
       {character && !loading && !error && (
-        <Paper className="character-paper" style={{ background: theme.palette.background.paper }}>
-          <Box className="character-content">
+        <Card className="character-card">
+          <CardContent className="character-content">
             <Avatar
               src={getAvatarUrl(character.name)}
               alt={character.name}
@@ -92,7 +83,7 @@ const CharacterDetails: React.FC<CharacterDetailsProps> = ({ characters, loading
               <Box className="info-item">
                 <Typography variant="h6" className="info-title">Species:</Typography>
                 <Typography variant="body1">
-                  {speciesNames.length ? speciesNames.join(', ') : 'N/A'}
+                  {character.species_names.length ? character.species_names.join(', ') : 'N/A'}
                 </Typography>
               </Box>
             </Box>
@@ -107,8 +98,8 @@ const CharacterDetails: React.FC<CharacterDetailsProps> = ({ characters, loading
                 Back to List
               </Button>
             </Box>
-          </Box>
-        </Paper>
+          </CardContent>
+        </Card>
       )}
     </Container>
   );

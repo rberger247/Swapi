@@ -5,7 +5,6 @@
     padding: 0 24px; 
   }
   
-
   .loading-box {
     display: flex;
     justify-content: center;
@@ -17,14 +16,12 @@
     margin-bottom: 20px;
   }
   
- 
   .character-paper {
     padding: 40px;
     border-radius: 8px;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1); 
   }
   
-
   .character-content {
     display: flex;
     flex-direction: column;
@@ -53,7 +50,6 @@
     width: 100%;
   }
   
-
   .info-item {
     width: 100%;
     text-align: center;
