@@ -12,6 +12,7 @@ This project was generated using [Vite](https://vitejs.dev/), a modern build too
 
 - **Character List**: Displays a paginated grid of Star Wars characters with basic details (name, birth year, species).
 - **Character Detail View**: Click a character card to view more details.
+- **Search Functionality**: Allows users to search for characters by name. As you type in the search bar, the character list updates dynamically to show only those characters whose names match the search term.
 - **Pagination**: Navigate through characters with centered pagination controls.
 - **Refresh Button**: Reload character data 
 - **Responsive and Modern Design Using Material UI**: Adapts to different screen sizes with a modern look and feel Material-UI-powered layout.
